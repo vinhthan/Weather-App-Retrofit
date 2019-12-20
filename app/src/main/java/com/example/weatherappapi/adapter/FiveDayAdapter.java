@@ -36,8 +36,8 @@ public class FiveDayAdapter extends RecyclerView.Adapter<FiveDayAdapter.ViewHold
 //        ForeCastFiveDay.List foreCastFiveDay = list.get(position);
 //        holder.txvTems.setText(foreCastFiveDay.getMain().getTemp()+"");
 
-        double tems = list.get(position).getMain().getTemp() -273.15;
-        double temsRound = Math.round(tems*10)/10;
+        double tems = list.get(position).getMain().getTemp() -273.15;//đổi từ độ K sang độ C
+        double temsRound = Math.round(tems*10)/10;//làm tròn lấy 1 chữ số sau dấu phẩy
 
         holder.txvTems.setText(temsRound + "°C");
         holder.txvClouds.setText(list.get(position).getWeather().get(0).getDescription());
