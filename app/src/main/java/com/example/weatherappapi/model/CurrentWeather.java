@@ -2,285 +2,305 @@ package com.example.weatherappapi.model;
 
 
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 public class CurrentWeather {
-    @SerializedName("request")
-    private final Request request;
+    @SerializedName("coord")
+    private final Coord coord;
 
-    @SerializedName("location")
-    private final Location location;
+    @SerializedName("weather")
+    private final List<Weather> weather;
 
-    @SerializedName("current")
-    private final Current current;
+    @SerializedName("base")
+    private final String base;
 
-    public CurrentWeather(Request request, Location location, Current current) {
-        this.request = request;
-        this.location = location;
-        this.current = current;
+    @SerializedName("main")
+    private final Main main;
+
+    @SerializedName("wind")
+    private final Wind wind;
+
+    @SerializedName("clouds")
+    private final Clouds clouds;
+
+    @SerializedName("dt")
+    private final int dt;
+
+    @SerializedName("sys")
+    private final Sys sys;
+
+    @SerializedName("timezone")
+    private final int timezone;
+
+    @SerializedName("id")
+    private final int id;
+
+    @SerializedName("name")
+    private final String name;
+
+    @SerializedName("cod")
+    private final int cod;
+
+    public CurrentWeather(Coord coord, List<Weather> weather, String base, Main main, Wind wind,
+                          Clouds clouds, int dt, Sys sys, int timezone, int id, String name, int cod) {
+        this.coord = coord;
+        this.weather = weather;
+        this.base = base;
+        this.main = main;
+        this.wind = wind;
+        this.clouds = clouds;
+        this.dt = dt;
+        this.sys = sys;
+        this.timezone = timezone;
+        this.id = id;
+        this.name = name;
+        this.cod = cod;
     }
 
-    public Request getRequest() {
-        return request;
+    public Coord getCoord() {
+        return coord;
     }
 
-    public Location getLocation() {
-        return location;
+    public List<Weather> getWeather() {
+        return weather;
     }
 
-    public Current getCurrent() {
-        return current;
+    public String getBase() {
+        return base;
     }
 
-    public static class Request {
-        @SerializedName("type")
-        private final String type;
-
-        @SerializedName("query")
-        private final String query;
-
-        @SerializedName("language")
-        private final String language;
-
-        @SerializedName("unit")
-        private final String unit;
-
-        public Request(String type, String query, String language, String unit) {
-            this.type = type;
-            this.query = query;
-            this.language = language;
-            this.unit = unit;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public String getQuery() {
-            return query;
-        }
-
-        public String getLanguage() {
-            return language;
-        }
-
-        public String getUnit() {
-            return unit;
-        }
+    public Main getMain() {
+        return main;
     }
 
-    public static class Location {
-        @SerializedName("name")
-        private final String name;
+    public Wind getWind() {
+        return wind;
+    }
 
-        @SerializedName("country")
-        private final String country;
+    public Clouds getClouds() {
+        return clouds;
+    }
 
-        @SerializedName("region")
-        private final String region;
+    public int getDt() {
+        return dt;
+    }
+
+    public Sys getSys() {
+        return sys;
+    }
+
+    public int getTimezone() {
+        return timezone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public static class Coord {
+        @SerializedName("lon")
+        private final double lon;
 
         @SerializedName("lat")
-        private final String lat;
+        private final double lat;
 
-        @SerializedName("lon")
-        private final String lon;
-
-        @SerializedName("timezone_id")
-        private final String timezoneId;
-
-        @SerializedName("localtime")
-        private final String localtime;
-
-        @SerializedName("localtime_epoch")
-        private final int localtimeEpoch;
-
-        @SerializedName("utc_offset")
-        private final String utcOffset;
-
-        public Location(String name, String country, String region, String lat, String lon,
-                        String timezoneId, String localtime, int localtimeEpoch, String utcOffset) {
-            this.name = name;
-            this.country = country;
-            this.region = region;
-            this.lat = lat;
+        public Coord(double lon, double lat) {
             this.lon = lon;
-            this.timezoneId = timezoneId;
-            this.localtime = localtime;
-            this.localtimeEpoch = localtimeEpoch;
-            this.utcOffset = utcOffset;
+            this.lat = lat;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public String getCountry() {
-            return country;
-        }
-
-        public String getRegion() {
-            return region;
-        }
-
-        public String getLat() {
-            return lat;
-        }
-
-        public String getLon() {
+        public double getLon() {
             return lon;
         }
 
-        public String getTimezoneId() {
-            return timezoneId;
-        }
-
-        public String getLocaltime() {
-            return localtime;
-        }
-
-        public int getLocaltimeEpoch() {
-            return localtimeEpoch;
-        }
-
-        public String getUtcOffset() {
-            return utcOffset;
+        public double getLat() {
+            return lat;
         }
     }
 
-    public static class Current {
-        @SerializedName("observation_time")
-        private final String observationTime;
+    public static class Weather {
+        @SerializedName("id")
+        private final int id;
 
-        @SerializedName("temperature")
-        private final int temperature;
+        @SerializedName("main")
+        private final String main;
 
-        @SerializedName("weather_code")
-        private final int weatherCode;
+        @SerializedName("description")
+        private final String description;
 
-        @SerializedName("weather_icons")
-        private final List<String> weatherIcons;
+        @SerializedName("icon")
+        private final String icon;
 
-        @SerializedName("weather_descriptions")
-        private final List<String> weatherDescriptions;
+        public Weather(int id, String main, String description, String icon) {
+            this.id = id;
+            this.main = main;
+            this.description = description;
+            this.icon = icon;
+        }
 
-        @SerializedName("wind_speed")
-        private final int windSpeed;
+        public int getId() {
+            return id;
+        }
 
-        @SerializedName("wind_degree")
-        private final int windDegree;
+        public String getMain() {
+            return main;
+        }
 
-        @SerializedName("wind_dir")
-        private final String windDir;
+        public String getDescription() {
+            return description;
+        }
+
+        public String getIcon() {
+            return icon;
+        }
+    }
+
+    public static class Main {
+        @SerializedName("temp")
+        private final double temp;
+
+        @SerializedName("feels_like")
+        private final double feelsLike;
+
+        @SerializedName("temp_min")
+        private final double tempMin;
+
+        @SerializedName("temp_max")
+        private final double tempMax;
 
         @SerializedName("pressure")
         private final int pressure;
 
-        @SerializedName("precip")
-        private final double precip;
-
         @SerializedName("humidity")
         private final int humidity;
 
-        @SerializedName("cloudcover")
-        private final int cloudcover;
-
-        @SerializedName("feelslike")
-        private final int feelslike;
-
-        @SerializedName("uv_index")
-        private final int uvIndex;
-
-        @SerializedName("visibility")
-        private final int visibility;
-
-        @SerializedName("is_day")
-        private final String isDay;
-
-        public Current(String observationTime, int temperature, int weatherCode,
-                       List<String> weatherIcons, List<String> weatherDescriptions, int windSpeed,
-                       int windDegree, String windDir, int pressure, double precip, int humidity,
-                       int cloudcover, int feelslike, int uvIndex, int visibility, String isDay) {
-            this.observationTime = observationTime;
-            this.temperature = temperature;
-            this.weatherCode = weatherCode;
-            this.weatherIcons = weatherIcons;
-            this.weatherDescriptions = weatherDescriptions;
-            this.windSpeed = windSpeed;
-            this.windDegree = windDegree;
-            this.windDir = windDir;
+        public Main(double temp, double feelsLike, double tempMin, double tempMax, int pressure,
+                    int humidity) {
+            this.temp = temp;
+            this.feelsLike = feelsLike;
+            this.tempMin = tempMin;
+            this.tempMax = tempMax;
             this.pressure = pressure;
-            this.precip = precip;
             this.humidity = humidity;
-            this.cloudcover = cloudcover;
-            this.feelslike = feelslike;
-            this.uvIndex = uvIndex;
-            this.visibility = visibility;
-            this.isDay = isDay;
         }
 
-        public String getObservationTime() {
-            return observationTime;
+        public double getTemp() {
+            return temp;
         }
 
-        public int getTemperature() {
-            return temperature;
+        public double getFeelsLike() {
+            return feelsLike;
         }
 
-        public int getWeatherCode() {
-            return weatherCode;
+        public double getTempMin() {
+            return tempMin;
         }
 
-        public List<String> getWeatherIcons() {
-            return weatherIcons;
-        }
-
-        public List<String> getWeatherDescriptions() {
-            return weatherDescriptions;
-        }
-
-        public int getWindSpeed() {
-            return windSpeed;
-        }
-
-        public int getWindDegree() {
-            return windDegree;
-        }
-
-        public String getWindDir() {
-            return windDir;
+        public double getTempMax() {
+            return tempMax;
         }
 
         public int getPressure() {
             return pressure;
         }
 
-        public double getPrecip() {
-            return precip;
-        }
-
         public int getHumidity() {
             return humidity;
         }
+    }
 
-        public int getCloudcover() {
-            return cloudcover;
+    public static class Wind {
+        @SerializedName("speed")
+        private final double speed;
+
+        @SerializedName("deg")
+        private final int deg;
+
+        @SerializedName("gust")
+        private final double gust;
+
+        public Wind(double speed, int deg, double gust) {
+            this.speed = speed;
+            this.deg = deg;
+            this.gust = gust;
         }
 
-        public int getFeelslike() {
-            return feelslike;
+        public double getSpeed() {
+            return speed;
         }
 
-        public int getUvIndex() {
-            return uvIndex;
+        public int getDeg() {
+            return deg;
         }
 
-        public int getVisibility() {
-            return visibility;
+        public double getGust() {
+            return gust;
+        }
+    }
+
+    public static class Clouds {
+        @SerializedName("all")
+        private final int all;
+
+        public Clouds(int all) {
+            this.all = all;
         }
 
-        public String getIsDay() {
-            return isDay;
+        public int getAll() {
+            return all;
+        }
+    }
+
+    public static class Sys {
+        @SerializedName("type")
+        private final int type;
+
+        @SerializedName("id")
+        private final int id;
+
+        @SerializedName("country")
+        private final String country;
+
+        @SerializedName("sunrise")
+        private final int sunrise;
+
+        @SerializedName("sunset")
+        private final int sunset;
+
+        public Sys(int type, int id, String country, int sunrise, int sunset) {
+            this.type = type;
+            this.id = id;
+            this.country = country;
+            this.sunrise = sunrise;
+            this.sunset = sunset;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public int getSunrise() {
+            return sunrise;
+        }
+
+        public int getSunset() {
+            return sunset;
         }
     }
 }
