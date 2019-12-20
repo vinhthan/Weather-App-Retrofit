@@ -45,5 +45,10 @@ dependencies {
     //Glide
     implementation "com.github.bumptech.glide:glide:4.8.0"
 
+    //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //RecyclerView and CardView
+    implementation "androidx.recyclerview:recyclerview:1.1.0-alpha05"
+    implementation "androidx.cardview:cardview:1.0.0"
 }

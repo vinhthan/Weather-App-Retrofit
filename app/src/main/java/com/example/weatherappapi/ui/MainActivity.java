@@ -3,7 +3,9 @@ package com.example.weatherappapi.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
 
         getCurrentWeather();
 
+        layout7Day.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, FiveDayActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -63,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getCurrentWeather() {
 
-        Call<CurrentWeather> callCurrentWeather = apiInterface.getCurrentWeather("korea", Constants.API_KEY);
+        Call<CurrentWeather> callCurrentWeather = apiInterface.getCurrentWeather("vietnam", Constants.API_KEY);
         callCurrentWeather.enqueue(new Callback<CurrentWeather>() {
             @Override
             public void onResponse(Call<CurrentWeather> call, Response<CurrentWeather> response) {
@@ -101,24 +111,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-//https://weatherstack.com/
-
-//api key:
-//43ec6f4bc9bd52c30de5708b9063f22a
-
-//BASE_URL:
-//http://api.weatherstack.com/
-
-//weather current:
-//http://api.weatherstack.com/current?access_key=YOUR_ACCESS_KEY&query=New York
-//http://api.weatherstack.com/current?access_key=43ec6f4bc9bd52c30de5708b9063f22a&query=vietnam
-//http://api.weatherstack.com/current?access_key=43ec6f4bc9bd52c30de5708b9063f22a&query=New York
-
-//historical // toan bi FAILURE thoi
-//http://api.weatherstack.com/historical?access_key=43ec6f4bc9bd52c30de5708b9063f22a&query=New York&historical_date=2019-01-01&hourly=1
-
-
 
 //https://home.openweathermap.org/api_keys
 //cd981e9f8b0eaf987d8ea1a75488a09a
